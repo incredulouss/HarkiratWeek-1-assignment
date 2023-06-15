@@ -17,6 +17,38 @@
   - `npm run test-calculator`
 */
 
-class Calculator {}
+class Calculator {
+  Calculator(){
+   this.result = 1; 
+  }
+  add(num) {
+    this.result +=num;
+  }
+  subtract(num){
+    this.result -=num;
+  }
+  multiply(num){
+    this.result *=num;
+  }
+  divide(num){
+    this.result /=num;
+  }
+  clear(){
+    this.result = 0;
+  }
+  getResult(){
+    return this.result;
+  }
+  calculate(expression){
+    const sanitizedExpression = expression.replace(/\s/g, '');
+    // Evaluate the expression using eval
+    this.result = eval(sanitizedExpression);
+    return this.result;
+  }
+}
 
-module.exports = Calculator;
+let addi = new Calculator();
+addi.calculate('10 +   2 *    (   6 - (4 + 1) / 2) + 7');
+console.log(addi.getResult());
+//module.exports = Calculator;
+
